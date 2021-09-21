@@ -18,11 +18,11 @@ app.use(express.json());
 app.use('/uploads', express.static('uploads'))
 app.use(express.urlencoded({extended: true}));
 
-mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/project1', {
+mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://lamuelkane:lanyoestate@cluster0.gdg6i.mongodb.net/e-commerce?retryWrites=true&w=majority', {
   useNewUrlParser: true,
   useUnifiedTopology: true,
   useCreateIndex: true
-})
+}).then(console.log('connected to database'))
 
 const corsOptions ={
     origin:'http://localhost:3000', 

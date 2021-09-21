@@ -5,14 +5,8 @@ import bcrypt from 'bcrypt'
      {
         name: "lemuel",
         email:"ashulemuel@gmail.com",
-        password: bcrypt.hashSync('1234', 8),
+        password: bcrypt.hashSync('lanyoestate', 8),
         isAdmin:true
-     },
-     {
-        name: "junior",
-        email:"junior@gmail.com",
-        password: bcrypt.hashSync('12345', 8),
-        isAdmin:false
      }
  ],
  categorie: [
@@ -36,7 +30,7 @@ categories: [
     {category:"shorts"}, 
  ],
 
- products: [
+ product: [
     {
         name:"Grape   Ape",
         image:"./downloaded-images2/AAA/1427-BLG-510x510-1.jpg",
@@ -8098,7 +8092,7 @@ categories: [
             countInStock: 30,
         }],
 
-    product: [
+    products: [
         {
             name:"cool hat",
             image:"./downloded-images/hat10.jpg",
@@ -8155,7 +8149,7 @@ categories: [
             countInStock: 30,
         },
         {
-            name:"hat4",
+            name:"cool  hat4",
             image:"./downloded-images/hat5.jpg",
             description:"The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.",
             price:9.00,
@@ -8182,17 +8176,8 @@ categories: [
             countInStock: 30,
         },
         {
-            name:"hat2",
+            name:"cool hat2",
             image:"./downloded-images/hat9.jpg",
-            description:"The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.",
-            price:9.00,
-            category:"hats",
-            brand: ' Nike',
-            countInStock: 30,
-        },
-        {
-            name:"hat2",
-            image:"./downloded-images/hat3.jpg",
             description:"The European languages are members of the same family. Their separate existence is a myth. For science, music, sport, etc, Europe uses the same vocabulary. The languages only differ in their grammar, their pronunciation and their most common words.",
             price:9.00,
             category:"hats",
@@ -8832,8 +8817,10 @@ categories: [
             countInStock: 22,
         },
         
-    ]
+    ],
+    
 }
+
 
 
 
