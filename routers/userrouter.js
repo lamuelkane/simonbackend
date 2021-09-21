@@ -1,7 +1,7 @@
 import express from 'express'
 import bcrypt from 'bcrypt'
 import expressAsyncHandler from 'express-async-handler'
-// import data from '../products.js'
+import data from '../products.js'
 import User from '../module/usermodule.js'
 import { generateToken } from '../utils.js'
 

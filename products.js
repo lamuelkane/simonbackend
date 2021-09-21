@@ -15,7 +15,6 @@ import bcrypt from 'bcrypt'
         isAdmin:false
      }
  ],
-
  categorie: [
    {category:"edibles"},
    {category:"aaa"}, 
@@ -37,7 +36,7 @@ categories: [
     {category:"shorts"}, 
  ],
 
- product: [
+ products: [
     {
         name:"Grape   Ape",
         image:"./downloaded-images2/AAA/1427-BLG-510x510-1.jpg",
@@ -8099,7 +8098,7 @@ categories: [
             countInStock: 30,
         }],
 
-    products: [
+    product: [
         {
             name:"cool hat",
             image:"./downloded-images/hat10.jpg",

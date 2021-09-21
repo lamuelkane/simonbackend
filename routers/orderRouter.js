@@ -1,6 +1,7 @@
 import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
 import nodemailer from 'nodemailer'
+import order from '../module/ordermodule.js'
 
 var transporter = nodemailer.createTransport({
     service: 'smtp.gmail.com',
@@ -11,8 +12,6 @@ var transporter = nodemailer.createTransport({
       pass: 'lanyoestate'
     }
   });
-
-
 
 const orderRouter = express.Router()
 
@@ -82,7 +81,24 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
         }
       })
 
-      res.send('mail sent')
+      
+      const neworder = new order({
+        cartItems ,
+        shippingDetails ,
+        paymentmethod
+      })
+      
+      const ordersent = await neworder.save()
+      
+      res.send({
+        ordersent,
+        message: ' email may have been sent'
+      })
+}))
+
+orderRouter.get('/',  expressAsyncHandler(async (req, res) => {
+   const orders = await order.find({})
+   res.json(orders)
 }))
 
 export default orderRouter

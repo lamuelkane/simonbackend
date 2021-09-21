@@ -7,7 +7,7 @@ import ReviewRouter from './routers/ReviewsRouter.js'
 import orderRouter from './routers/orderRouter.js'
 import nodemailer from 'nodemailer'
 import messageRouter from './routers/messageRouter.js'
-
+import cors from 'cors'
 
 
 dotenv.config()
@@ -23,6 +23,14 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb://localhost/project1', {
   useUnifiedTopology: true,
   useCreateIndex: true
 })
+
+const corsOptions ={
+    origin:'http://localhost:3000', 
+    credentials:true,            //access-control-allow-credentials:true
+    optionSuccessStatus:200
+}
+
+app.use(cors(corsOptions));
 
 app.use('/api/users', userRouter) 
 
@@ -50,11 +58,11 @@ app.listen(port, ()=> {
 
 
 var transporter = nodemailer.createTransport({
-    host: 'gmail.com',
-    port:  465,
-    secure : true,
+    service: 'gmail',
+    //port:  465,
+    //secure : true,
     auth: {
-      user: 'hernandezpharel@gmail.com',
+      user: 'pharelsimons@gmail.com',
       pass: 'lanyoestate'
     }
   });
@@ -75,10 +83,4 @@ var transporter = nodemailer.createTransport({
         html:"<h1>hello world</h1>"
       }
 
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      })
+      transporter.sendMail(mailOptions).then(console.log('email sent')).catch((err) => console.log(err))

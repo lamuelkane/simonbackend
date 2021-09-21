@@ -31,7 +31,7 @@ ReviewRouter.get('/productreview', expressAsyncHandler(async (req, res) => {
     console.log("received reqests")
     const productsreviews = await PeoductReviews.find({})
     const prodreviews = productsreviews
-    res.send({ prodreviews });
+    res.send( prodreviews );
 }))
 
 ReviewRouter.post('/updateproductreview', expressAsyncHandler(async (req, res) => {

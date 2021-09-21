@@ -35,8 +35,15 @@ productRouter.get('/other', expressAsyncHandler(async (req, res) => {
 }))
 
 productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
-    console.log("received reqest");
-    await product.remove({}) 
+    // console.log("received reqest");
+    // await product.remove({}) 
+    const createdProducts = await product.insertMany(data.products);
+    res.send({ createdProducts });
+}))
+
+productRouter.get('/other/seed', expressAsyncHandler(async(req, res) => {
+    // console.log("received reqest");
+    // await product.remove({}) 
     const createdProducts = await product.insertMany(data.products);
     res.send({ createdProducts });
 }))
@@ -48,7 +55,7 @@ productRouter.post('/updateproduct', expressAsyncHandler(async (req, res) => {
         if (err) throw err;
         console.log("1 document updated");
     })
-    res.send(Product)
+    res.send(updatedProduct)
 }))
 
 productRouter.post('/createproduct', expressAsyncHandler(async (req, res) => {
@@ -67,7 +74,7 @@ productRouter.post('/updateproducts', expressAsyncHandler(async (req, res) => {
     let date = new Date()
     let array = req.body
     array.map(async (item) => {
-  let updatedProduct = await product.updateOne({_id: item.product}, {numOrders: item.numOrders, lastlyOrdered: item.lastlyOrdered}, (err, res) => {
+  let updatedProduct = await product.updateOne({_id: item._id}, item, (err, res) => {
             if (err) console.log(err)
             else { console.log(`updated ${item.product}`)}
         })
@@ -126,6 +133,15 @@ productRouter.get('/photo/:id', (req, res) => {
         res.send(result.image.buffer)
         })
     })
+
+productRouter.get('/delete/:id', async(req, res) => {
+    try {
+        let Product = await product.deleteOne({_id : req.params.id})
+        res.status(200).json(Product)
+    } catch (error) {
+        res.status(500).json(error)
+    }
+})
 
 productRouter.get('/:id', expressAsyncHandler(async(req, res) => {
     let Product = await product.findById(req.params.id)
