@@ -46,26 +46,31 @@ app.get("/", (req, res) => {
   res.send("hello world!")
 })
 
-app.use((err, req, res, next) => {
-  res.status(500).send({message: err.message})
+app.get('/test', (req, res) => {
+  res.send('this worked')
 })
 
+// app.use((err, req, res, next) => {
+//   res.status(500).send({message: err.message})
+// })
+
 const port = process.env.PORT || 5000
+
 app.listen(port, ()=> {
   console.log(`server started at port ${port}`)
 })
 
 
 
-var transporter = nodemailer.createTransport({
-    service: 'gmail',
-    //port:  465,
-    //secure : true,
-    auth: {
-      user: 'pharelsimons@gmail.com',
-      pass: 'lanyoestate'
-    }
-  });
+// var transporter = nodemailer.createTransport({
+//     service: 'gmail',
+//     //port:  465,
+//     //secure : true,
+//     auth: {
+//       user: 'pharelsimons@gmail.com',
+//       pass: 'lanyoestate'
+//     }
+//   });
 
 
 //   transporter.verify(function(error, success) {
@@ -76,11 +81,11 @@ var transporter = nodemailer.createTransport({
 //     }
 //   });
 
-    const mailOptions = {
-        from: 'hernandezpharel@gmail.com',
-        to: 'ashulemuel@gmail.com',
-        subject: 'Thanks For Shopping With Us',
-        html:"<h1>hello world</h1>"
-      }
+    // const mailOptions = {
+    //     from: 'hernandezpharel@gmail.com',
+    //     to: 'ashulemuel@gmail.com',
+    //     subject: 'Thanks For Shopping With Us',
+    //     html:"<h1>hello world</h1>"
+    //   }
 
-      transporter.sendMail(mailOptions).then(console.log('email sent')).catch((err) => console.log(err))
+    //   transporter.sendMail(mailOptions).then(console.log('email sent')).catch((err) => console.log(err))
