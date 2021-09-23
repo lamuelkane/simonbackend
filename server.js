@@ -25,7 +25,8 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://lamuelkane:lanyoestat
 }).then(console.log('connected to database'))
 
 const corsOptions ={
-    origin:'http://localhost:3000', 
+    // origin:'http://localhost:3000', 
+    origin:'https://advancedshopping.herokuapp.com'
     credentials:true,            //access-control-allow-credentials:true
     optionSuccessStatus:200
 }
