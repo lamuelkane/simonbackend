@@ -24,14 +24,27 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://lamuelkane:lanyoestat
   useCreateIndex: true
 }).then(console.log('connected to database'))
 
-const corsOptions ={
-    // origin:'http://localhost:3000', 
-    origin:'https://advancedshopping.herokuapp.com',
-    credentials:true,            //access-control-allow-credentials:true
-    optionSuccessStatus:200
-}
+// const corsOptions ={
+//     origin:'http://localhost:3000', 
+//     // origin:'https://advancedshopping.herokuapp.com',
+//     credentials:true,            //access-control-allow-credentials:true
+//     optionSuccessStatus:200
+// }
 
-app.use(cors(corsOptions));
+// app.use(cors(corsOptions));
+
+app.use((req, res, next) => {
+  const allowedOrigins = ['https://advancedshopping.herokuapp.com', 'http://advancedshopping.herokuapp.com', 'http://localhost:3000'];
+  const origin = req.headers.origin;
+  if (allowedOrigins.includes(origin)) {
+       res.setHeader('Access-Control-Allow-Origin', origin);
+  }
+  //res.header('Access-Control-Allow-Origin', 'http://127.0.0.1:8020');
+  res.header('Access-Control-Allow-Methods', 'GET, OPTIONS');
+  res.header('Access-Control-Allow-Headers', 'Content-Type, Authorization');
+  res.header('Access-Control-Allow-Credentials', true);
+  return next();
+});
 
 app.use('/api/users', userRouter) 
 
@@ -45,10 +58,6 @@ app.use('/chats', messageRouter)
 
 app.get("/", (req, res) => {
   res.send("hello world!")
-})
-
-app.get('/test', (req, res) => {
-  res.send('this worked')
 })
 
 // app.use((err, req, res, next) => {
