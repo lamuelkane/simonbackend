@@ -57,7 +57,7 @@ app.use('/order', orderRouter)
 app.use('/chats', messageRouter)
 
 app.get("/", (req, res) => {
-  res.send("hello world!")
+  res.send("lanyo estate")
 })
 
 // app.use((err, req, res, next) => {
@@ -92,7 +92,7 @@ app.listen(port, ()=> {
 //   });
 
     // const mailOptions = {
-    //     from: 'hernandezpharel@gmail.com',
+    //     from: 'pharelsimons@gmail.com',
     //     to: 'ashulemuel@gmail.com',
     //     subject: 'Thanks For Shopping With Us',
     //     html:"<h1>hello world</h1>"

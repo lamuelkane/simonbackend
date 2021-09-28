@@ -20,7 +20,7 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
     let shippingDetails = req.body.shippingDetails
     let paymentmethod = req.body.paymentmethod
     const mailOptions = {
-        from: 'hernandezpharel@gmail.com',
+        from: 'pharelsimons@gmail.com',
         to: req.body.shippingDetails.email,
         subject: 'Thanks For Shopping With Us',
         html: `  <div class="products-container" style="padding-top:10px;padding-bottom:10px;padding-right:10px;padding-left:10px;border-width:0.3px;border-style:solid;border-color:rgb(214, 212, 212);width:90%;margin-top:a;margin-bottom:a;margin-right:a;margin-left:a;" >
