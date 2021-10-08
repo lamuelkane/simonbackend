@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://lanyoestate:lanyoesta
 // app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  const allowedOrigins = ['https://advancedshopping.herokuapp.com', 'http://advancedshopping.herokuapp.com', 'http://localhost:3000'];
+  const allowedOrigins = ['https://advancedshopping.herokuapp.com', 'https://releifweed420.herokuapp.com', 'http://releifweed420.herokuapp.com', 'http://advancedshopping.herokuapp.com', 'http://localhost:3000'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
