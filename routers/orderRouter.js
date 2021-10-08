@@ -28,17 +28,17 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
         <p class="center" style="text-align:center;" >just a preview of your order</p>
         <p>Your Order (1234567888)</p>
         <div class="cartItems" style="display:grid;grid-auto-flow:row;" > 
-                    ${
-                        cartItems.map(item => {
-                        `<div class="cartItem" style="background-attachment:scroll;display:grid;grid-template-columns:repeat(7, 1fr);margin-bottom:6px;background-color:rgb(250, 250, 243);background-image:none;background-repeat:repeat;background-position:top left;border-top-width:0.0001px;border-top-style:solid;border-top-color:rgb(204, 202, 202);height:100px;" >
-                            <img class="img" src=${item.image} alt="" style="height:80px;width:100px;grid-column:1/ 3;margin-top:auto;margin-bottom:auto;margin-right:auto;margin-left:auto;" ></img>
-                                <div class="description" style="grid-column:3 /7;margin-left:10px;display:flex;flex-direction:column;justify-content:center;" >
-                                <h3 style="margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;font-weight:bold;">${item.name}<small>(option)</small></h3>
-                                </div>
-                            <p class="cartItem-total" style="margin-top:auto;margin-bottom:0px;margin-right:0px;color:#008;" >${item.price.toFixed(2)} x ${item.qty} = ${"  "} $${(item.price * item.qty ).toFixed(2)}</p>
-                        </div>`
-                        })
-                    }
+            ${
+                cartItems.map(item => {
+                `<div class="cartItem" style="background-attachment:scroll;display:grid;grid-template-columns:repeat(7, 1fr);margin-bottom:6px;background-color:rgb(250, 250, 243);background-image:none;background-repeat:repeat;background-position:top left;border-top-width:0.0001px;border-top-style:solid;border-top-color:rgb(204, 202, 202);height:100px;" >
+                    <img class="img" src=${item.image} alt="" style="height:80px;width:100px;grid-column:1/ 3;margin-top:auto;margin-bottom:auto;margin-right:auto;margin-left:auto;" ></img>
+                        <div class="description" style="grid-column:3 /7;margin-left:10px;display:flex;flex-direction:column;justify-content:center;" >
+                        <h3 style="margin-top:0px;margin-bottom:0px;margin-right:0px;margin-left:0px;font-weight:bold;">${item.name}<small>(option)</small></h3>
+                        </div>
+                    <p class="cartItem-total" style="margin-top:auto;margin-bottom:0px;margin-right:0px;color:#008;" >${item.price.toFixed(2)} x ${item.qty} = ${"  "} $${(item.price * item.qty ).toFixed(2)}</p>
+                </div>`
+                })
+            }
         </div>
       <hr/>
         <div class="section-divider-center" style="display:flex;justify-content:space-around;flex-wrap:wrap;" >
@@ -73,13 +73,7 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
       </div>`
       }
 
-      transporter.sendMail(mailOptions, function(error, info){
-        if (error) {
-          console.log(error);
-        } else {
-          console.log('Email sent: ' + info.response);
-        }
-      })
+      transporter.sendMail(mailOptions).then(console.log('email sent')).catch((err) => console.log(err))
 
       
       const neworder = new order({

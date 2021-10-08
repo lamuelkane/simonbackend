@@ -9,7 +9,7 @@ import bcrypt from 'bcrypt'
         isAdmin:true
      }
  ],
- categorie: [
+ categories: [
    {category:"edibles"},
    {category:"aaa"}, 
    {category:"hybrid"},
@@ -22,7 +22,7 @@ import bcrypt from 'bcrypt'
    {category:"mushroom"}, 
    {category:"concentrates"}
 ],
-categories: [
+categorie: [
     {category:"hats"},
     {category:"shoes"}, 
     {category:"skirts"},
@@ -30,7 +30,7 @@ categories: [
     {category:"shorts"}, 
  ],
 
- product: [
+ products: [
     {
         name:"Grape   Ape",
         image:"./downloaded-images2/AAA/1427-BLG-510x510-1.jpg",
@@ -8092,7 +8092,7 @@ categories: [
             countInStock: 30,
         }],
 
-    products: [
+    product: [
         {
             name:"cool hat",
             image:"./downloded-images/hat10.jpg",
