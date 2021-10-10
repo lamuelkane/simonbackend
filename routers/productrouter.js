@@ -19,17 +19,16 @@ let storage = multer.diskStorage({
 
 const productRouter = express.Router()
 
-productRouter.get('/', expressAsyncHandler(async (req, res) => {
-    console.log(req.body)
+productRouter.get('/products/:cat', expressAsyncHandler(async (req, res) => {
+    const category = req.query.cat
     const products = await product.find({})
-    const createdProductcategory = req.query.category.toLowerCase() === "all-products"?products:products.filter(prod => prod.category.toLowerCase() === req.query.category.toLowerCase())
-    const createdProducts = req.query.search === ""?createdProductcategory:createdProductcategory.filter(prod => prod.name.toLocaleLowerCase().includes(req.query.search.toLocaleLowerCase()))
+
     res.send({ createdProducts });
 }))
 
 
 productRouter.get('/other', expressAsyncHandler(async (req, res) => {
-    console.log(req.body)
+    // console.log(req.body)
     const products = await product.find({})
     res.send(products);
 }))

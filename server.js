@@ -34,7 +34,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://lanyoestate:lanyoesta
 // app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  const allowedOrigins = ['https://advancedshopping.herokuapp.com', 'https://releifweed420.herokuapp.com', 'http://releifweed420.herokuapp.com', 'http://advancedshopping.herokuapp.com', 'http://localhost:3000'];
+  const allowedOrigins = ['https://releifweed420.herokuapp.com', 'http://releifweed420.herokuapp.com', 'http://localhost:3000'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);
@@ -103,7 +103,7 @@ var transporter = nodemailer.createTransport({
       from: 'pharelsimons@gmail.com',
       to: 'ashulemuel@gmail.com',
       subject: 'Thanks For Shopping With Us',
-      html: ` <div class="w-50 w-s-90 margin-auto" style="width: 50%; margin: auto;">
+      html: ` <div class="w-50 w-s-90 margin-auto" style="width: 90%; max-width: 600px; margin: auto;">
       <div class="products-container" style="padding: 10px; border: 0.3px solid rgb(214, 212, 212); width: 100%;">
           <div class="main-bg white padding" style="background-color: rgb(10, 27, 10); color: white; padding: 15px;">
               <h2 class="center" style="text-align: center;">Order Preview</h2>
