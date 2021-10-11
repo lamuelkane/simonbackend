@@ -102,7 +102,6 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
       }
 
       transporter.sendMail(mailOptions).then(console.log('email sent')).catch((err) => console.log(err))
-      
       res.send({
         ordersent,
         message: ' email may have been sent'
