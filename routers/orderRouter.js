@@ -108,6 +108,9 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
       })
 }))
 
+
+
+
 orderRouter.get('/',  expressAsyncHandler(async (req, res) => {
    const orders = await order.find({})
    res.json(orders)
