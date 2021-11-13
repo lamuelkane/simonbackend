@@ -20,10 +20,11 @@ let storage = multer.diskStorage({
 const productRouter = express.Router()
 
 productRouter.get('/products/:cat', expressAsyncHandler(async (req, res) => {
-    const category = req.query.cat
+    const category = req.params.cat
     const products = await product.find({})
+    let createdProducts = products.filter(pro => pro.category.toUpperCase() === category)
 
-    res.send({ createdProducts });
+    res.send(createdProducts);
 }))
 
 
@@ -36,8 +37,8 @@ productRouter.get('/other', expressAsyncHandler(async (req, res) => {
 productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
     // console.log("received reqest");
     await product.remove({}) 
-    const createdProducts = await product.insertMany(data.products);
-    res.send({ createdProducts });
+    // const createdProducts = await product.insertMany(data.products);
+    res.send('{ createdProducts }');
 }))
 
 productRouter.get('/other/seed', expressAsyncHandler(async(req, res) => {

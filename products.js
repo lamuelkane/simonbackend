@@ -10,15 +10,13 @@ import bcrypt from 'bcrypt'
      }
  ],
  categories: [
-   {category:"edibles"},
-   {category:"aaa"}, 
-   {category:"hybrid"},
-   {category:"indica"},
-   {category:"sativa"}, 
-   {category:"aaaa"}, 
-   {category:"cbd"}, 
-   {category:"vaporizers"}, 
-   {category:"tinctures"}, 
+   {category:"vape cartridges"},
+   {category:"gummies"}, 
+   {category:"berner"},
+   {category:"flower"},
+   {category:"pods"}, 
+   {category:"runtz cans"}, 
+   {category:"weed packs"}, 
    {category:"mushroom"}, 
    {category:"concentrates"}
 ],
