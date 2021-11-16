@@ -33,7 +33,7 @@ mongoose.connect(process.env.MONGODB_URL || 'mongodb+srv://lanyoestate:lanyoesta
 // app.use(cors(corsOptions));
 
 app.use((req, res, next) => {
-  const allowedOrigins = ['https://releifweed420.herokuapp.com', 'http://releifweed420.herokuapp.com', 'http://localhost:3000'];
+  const allowedOrigins = ['https://releifweed420.herokuapp.com', 'http://releifweed420.herokuapp.com', 'https://releifweed420.com', 'http://releifweed420.com', 'http://localhost:3000'];
   const origin = req.headers.origin;
   if (allowedOrigins.includes(origin)) {
        res.setHeader('Access-Control-Allow-Origin', origin);

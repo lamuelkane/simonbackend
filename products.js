@@ -10,15 +10,15 @@ import bcrypt from 'bcrypt'
      }
  ],
  categories: [
-   {category:"vape cartridges"},
-   {category:"gummies"}, 
+//    {category:"vape cartridges"},
    {category:"berner"},
    {category:"flower"},
-   {category:"pods"}, 
-   {category:"runtz cans"}, 
+//    {category:"pods"}, 
+//    {category:"runtz cans"}, 
    {category:"weed packs"}, 
    {category:"mushroom"}, 
-   {category:"concentrates"}
+   {category:"concentrates"},
+   {category:"gummies"}, 
 ],
 categorie: [
     {category:"hats"},
