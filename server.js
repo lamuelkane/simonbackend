@@ -6,6 +6,7 @@ import userRouter from './routers/userrouter.js'
 import ReviewRouter from './routers/ReviewsRouter.js'
 import orderRouter from './routers/orderRouter.js'
 import nodemailer from 'nodemailer'
+import expressAsyncHandler from 'express-async-handler'
 import messageRouter from './routers/messageRouter.js'
 
 
@@ -59,26 +60,44 @@ app.get("/", (req, res) => {
   res.send("simon server updated")
 })
 
+
 var transporter = nodemailer.createTransport({
   service: 'gmail',
   auth: {
-    user: 'pharelsimons@gmail.com',
+    user: 'releifweed420@gmail.com',
     pass: 'lanyoestate'
   }
 });
 
-
-app.post('/contact', (req, res) => {
+app.post('/contact', expressAsyncHandler((req, res) => {
   let message = {
-    from: 'pharelsimons@gmail.com',
-        to: 'ashulemuel@gmail.com',
+    from: 'releifweed420@gmail.com',
+        to: req.body.email,
         subject: `New Contact received from ${req.body.name} email ${req.body.email}`,
         text:req.body.message
   }
+  transporter.sendMail(message).then(() => {
+    console.log('email sent')
+    res.status(200).send('email sent successfully')
+  }).catch((err) => () => {
+    console.log('err occured' + err)
+    res.status(200).send('an err occured whille sending email' + err)
+  })
+}))
 
-  transporter.sendMail(message).then(console.log('email sent')).catch((err) => console.log(err))
 
-})
+app.get('/email', expressAsyncHandler((req, res) => {
+  let message = {
+    from: 'releifweed420 suport',
+        to: 'ashulemuel@gmail.com, pharelsimons@gmail.com',
+        subject: `New email received`,
+        text: 'some random message'
+  }
+
+  transporter.sendMail(message).then(res.status(200).send('email sent successfully')).catch((err) =>   res.status(500).send('an arror occured' + err))
+
+  res.send('email sent successfully')
+}))
 
 const port = process.env.PORT || 5000
 

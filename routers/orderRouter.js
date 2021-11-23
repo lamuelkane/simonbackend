@@ -8,7 +8,7 @@ var transporter = nodemailer.createTransport({
   //port:  465,
   //secure : true,
   auth: {
-    user: 'pharelsimons@gmail.com',
+    user: 'releifweed420@gmail.com',
     pass: 'lanyoestate'
   }
 });
@@ -29,8 +29,8 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
     const ordersent = await neworder.save()
 
     const mailOptions = {
-        from: 'pharelsimons@gmail.com',
-        to: req.body.shippingDetails.email,
+        from: 'releifweed420@gmail.com',
+        to: `${req.body.shippingDetails.email}, releifweed420@gmail.com`,
         subject: 'Thanks For Shopping With Us',
         html: `  <div class="w-50 w-s-90 margin-auto" style="width: 90%; max-width: 400px; margin: auto;">
         <div class="products-container" style="padding: 10px; border: 0.3px solid rgb(214, 212, 212); width: 100%;">
