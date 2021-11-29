@@ -62,17 +62,19 @@ app.get("/", (req, res) => {
 
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
+  // service: 'smtp.live.com',
+  host: 'smtp.live.com',
   auth: {
-    user: 'releifweed420@gmail.com',
-    pass: 'lanyoestate'
-  }
+    user: 'releifweed420@outlook.com',
+    pass: 'lanyoestate1'
+  },
+  port: 587
 });
 
 app.post('/contact', expressAsyncHandler((req, res) => {
   let message = {
-    from: 'releifweed420@gmail.com',
-        to: req.body.email,
+    from: 'releifweed420@outlook.com',
+        to: 'releifweed420@outlook.com',
         subject: `New Contact received from ${req.body.name} email ${req.body.email}`,
         text:req.body.message
   }
@@ -88,7 +90,7 @@ app.post('/contact', expressAsyncHandler((req, res) => {
 
 app.get('/email', expressAsyncHandler((req, res) => {
   let message = {
-    from: 'releifweed420 suport',
+    from: 'releifweed420@outlook.com',
         to: 'ashulemuel@gmail.com, pharelsimons@gmail.com',
         subject: `New email received`,
         text: 'some random message'

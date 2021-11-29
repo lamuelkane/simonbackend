@@ -29,20 +29,17 @@ productRouter.get('/products/:cat', expressAsyncHandler(async (req, res) => {
 
 
 productRouter.get('/other', expressAsyncHandler(async (req, res) => {
-    // console.log(req.body)
     const products = await product.find({})
     res.send(products);
 }))
 
 productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
-    // console.log("received reqest");
     await product.remove({}) 
     // const createdProducts = await product.insertMany(data.products);
     res.send('{ createdProducts }');
 }))
 
 productRouter.get('/other/seed', expressAsyncHandler(async(req, res) => {
-    // console.log("received reqest");
     // await product.remove({}) 
     const createdProducts = await product.insertMany(data.products);
     res.send({ createdProducts });
@@ -59,7 +56,6 @@ productRouter.post('/updateproduct', expressAsyncHandler(async (req, res) => {
 }))
 
 productRouter.post('/createproduct', expressAsyncHandler(async (req, res) => {
-    console.log('creating...')
     const productExist = await product.findOne({name: req.body.name})
     if (productExist) {
         res.status(400).send({error: "product with same name already exist"})
@@ -76,9 +72,7 @@ productRouter.post('/updateproducts', expressAsyncHandler(async (req, res) => {
     array.map(async (item) => {
   let updatedProduct = await product.updateOne({_id: item._id}, item, (err, res) => {
             if (err) console.log(err)
-            else { console.log(`updated ${item.product}`)}
         })
-        console.log(updatedProduct)
     })
     res.send({message: 'successfully updated products'})
 }))
@@ -114,7 +108,6 @@ productRouter.post('/uploadphoto', upload.single('picture'), expressAsyncHandler
 productRouter.get('/photos', (req, res) => {
     productsimage.find((err, result) => {
           const imgArray= result.map(element => element._id);
-                console.log(imgArray);
     
        if (err) return console.log(err)
        res.send(imgArray)

@@ -4,13 +4,13 @@ import nodemailer from 'nodemailer'
 import order from '../module/ordermodule.js'
 
 var transporter = nodemailer.createTransport({
-  service: 'gmail',
-  //port:  465,
-  //secure : true,
+  // service: 'smtp.live.com',
+  host: 'smtp.live.com',
   auth: {
-    user: 'releifweed420@gmail.com',
-    pass: 'lanyoestate'
-  }
+    user: 'releifweed420@outlook.com',
+    pass: 'lanyoestate1'
+  },
+  port: 587
 });
 
 const orderRouter = express.Router()
@@ -29,10 +29,19 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
     const ordersent = await neworder.save()
 
     const mailOptions = {
-        from: 'releifweed420@gmail.com',
-        to: `${req.body.shippingDetails.email}, releifweed420@gmail.com`,
-        subject: 'Thanks For Shopping With Us',
-        html: `  <div class="w-50 w-s-90 margin-auto" style="width: 90%; max-width: 400px; margin: auto;">
+        from: 'releifweed420@outlook.com',
+        to: `${req.body.shippingDetails.email}, releifweed420@outlook.com`,
+        subject: 'Order Received',
+        html: ` <div style='padding: 30px; '>
+          <p style="width: 90%; max-width: 400px; color: white;><center>
+          Hello ${req.body.shippingDetails.name} you received this email to let 
+          you know that we have received your order and to say we are grateful to you for
+           choosing to shop with us. You will receive another email from us letting you 
+           know how to go on from here.
+                below are the details of your Order...
+          </center></p>
+
+        <div class="w-50 w-s-90 margin-auto" style="width: 90%; max-width: 400px; margin: auto; background-color: white;">
         <div class="products-container" style="padding: 10px; border: 0.3px solid rgb(214, 212, 212); width: 100%;">
             <div class="main-bg white padding" style="background-color: rgb(10, 27, 10); color: white; padding: 15px;">
                 <h2 class="center" style="text-align: center;">Order Details</h2>
@@ -68,7 +77,7 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
             <div class="center" style="text-align: center;">
                 <h3>Details</h3>
                 <div><b>Subtotal</b>: <span>$${cartItems.reduce((a, c) => a + c.price * c.amount, 0)}</span></div>
-                <div><b>Shipping</b>: <span>$${cartItems.reduce((a, c) => a + c.price * c.amount, 0) * 20/100}</span></div>
+                <div><b>Shipping</b>: <span>$${cartItems.reduce((a, c) => a + c.price * c.amount, 0) * 15/100}</span></div>
             </div>
         </div>
         <hr>
@@ -81,15 +90,15 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
         <hr>
         <div class="section-dividr">
             <div>
-                <h3 class="order-total" style="text-align: center;"><small>Payment With ${paymentmethod}    </small><span>447.990</span></h3>
+                <h3 class="order-total" style="text-align: center;"><small>Payment With ${paymentmethod}</small></h3>
             </div>
             <div>
-                <h3 class="order-total" style="text-align: center;">Thanks for shopping at <a href='releifweed420.herokuapp.com' style="color: blue; ">releifweed420</a> Your top marijuana dispensary</h3>
+                <h3 class="order-total" style="text-align: center;">Thanks for shopping at <a href='releifweed420.com' style="color: blue; ">releifweed420</a> Your top marijuana dispensary</h3>
             </div>
         </div>
     </div>
     
-    </div>
+    </div> </div>
    
   
   <style>
