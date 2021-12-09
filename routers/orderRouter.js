@@ -116,7 +116,7 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
         <td style="padding-bottom:10px;padding-left:10px;padding-right:10px;">
         <div style="font-family: sans-serif">
         <div style="font-size: 12px; font-family: Lato, Tahoma, Verdana, Segoe, sans-serif; mso-line-height-alt: 14.399999999999999px; color: #052D3D; line-height: 1.2;">
-        <p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:18px;color:#ffffff;"><span style="">Hello John, you receiveed this email to let you know that we have received your order and you will get another email from us letting you know how to proceed from here</span></span></p>
+        <p style="margin: 0; font-size: 14px; text-align: center;"><span style="font-size:18px;color:#ffffff;"><span style="">Hello ${shippingDetails.name}, you receiveed this email to let you know that we have received your order and you will get another email from us letting you know how to proceed from here</span></span></p>
         </div>
         </div>
         </td>
@@ -331,7 +331,7 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
           <div class="section">
             <div>
               <p class="order-totaltext" style="color: rgb(10, 27, 10); text-align: center;">Order Total</p>
-              <h3 class="order-total" style="text-align: center;">$${(cartItems.reduce((a, c) => a + c.price * c.amount, 0) * 20/100) + (cartItems.reduce((a, c) => a + c.price * c.amount, 0))}</h3>
+              <h3 class="order-total" style="text-align: center;">$${(cartItems.reduce((a, c) => a + c.price * c.amount, 0) * 20/100) + (cartItems.reduce((a, c) => a + c.price * c.amount, 0)).toFixed()}</h3>
             </div>
           </div>
           <hr>
