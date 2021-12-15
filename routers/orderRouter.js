@@ -331,7 +331,7 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
           <div class="section">
             <div>
               <p class="order-totaltext" style="color: rgb(10, 27, 10); text-align: center;">Order Total</p>
-              <h3 class="order-total" style="text-align: center;">$${(cartItems.reduce((a, c) => a + c.price * c.amount, 0) * 20/100) + (cartItems.reduce((a, c) => a + c.price * c.amount, 0)).toFixed()}</h3>
+              <h3 class="order-total" style="text-align: center;">$${(cartItems.reduce((a, c) => a + c.price * c.amount, 0) * 15/100) + (cartItems.reduce((a, c) => a + c.price * c.amount, 0))}</h3>
             </div>
           </div>
           <hr>
