@@ -1,6 +1,6 @@
 import express from 'express'
 import expressAsyncHandler from 'express-async-handler'
-import data from '../products.js'
+import data, { vape } from '../products.js'
 import product , {category, productsimage} from '../module/productmodule.js'
 import multer from 'multer'
 import fs from 'fs'
@@ -41,7 +41,7 @@ productRouter.get('/seed', expressAsyncHandler(async(req, res) => {
 
 productRouter.get('/other/seed', expressAsyncHandler(async(req, res) => {
     // await product.remove({}) 
-    const createdProducts = await product.insertMany(data.products);
+    const createdProducts = await product.insertMany(vape);
     res.send({ createdProducts });
 }))
 

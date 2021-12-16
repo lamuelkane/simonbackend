@@ -57,7 +57,7 @@ app.use('/order', orderRouter)
 app.use('/chats', messageRouter)
 
 app.get("/", (req, res) => {
-  res.send("simon server updated")
+  res.send("simon server gain")
 })
 
 
