@@ -19,6 +19,7 @@ import bcrypt from 'bcrypt'
    {category:"mushroom"}, 
    {category:"concentrates"},
    {category:"gummies"}, 
+   {category:"Vape Category"}, 
 ],
 categorie: [
     {category:"hats"},
