@@ -63,12 +63,16 @@ app.get("/", (req, res) => {
 
 var transporter = nodemailer.createTransport({
   // service: 'smtp.live.com',
-  host: 'smtp.live.com',
+  // host: 'smtp.live.com',
+  host: 'smtp.titan.email',
   auth: {
-    user: 'releifweed420@outlook.com',
-    pass: 'lanyoestate1'
+    // user: 'releifweed420@outlook.com',
+    user: 'info@releifweed420.com',
+    pass: 'F7OMFxfzNF'
+    // pass: 'lanyoestate1'
   },
-  port: 587
+  // port: 587
+  port: 465
 });
 
 app.post('/contact', expressAsyncHandler((req, res) => {
@@ -90,7 +94,8 @@ app.post('/contact', expressAsyncHandler((req, res) => {
 
 app.get('/email', expressAsyncHandler((req, res) => {
   let message = {
-    from: 'releifweed420@outlook.com',
+    // from: 'releifweed420@outlook.com',
+    from : 'info@releifweed420.com',
         to: 'ashulemuel@gmail.com, pharelsimons@gmail.com',
         subject: `New email received`,
         text: 'some random message'

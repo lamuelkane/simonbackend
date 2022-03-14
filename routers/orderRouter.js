@@ -3,14 +3,28 @@ import expressAsyncHandler from 'express-async-handler'
 import nodemailer from 'nodemailer'
 import order from '../module/ordermodule.js'
 
+// var transporter = nodemailer.createTransport({
+//   // service: 'smtp.live.com',
+//   host: 'smtp.live.com',
+//   auth: {
+//     user: 'releifweed420@outlook.com',
+//     pass: 'lanyoestate1'
+//   },
+//   port: 587
+// });
+
 var transporter = nodemailer.createTransport({
   // service: 'smtp.live.com',
-  host: 'smtp.live.com',
+  // host: 'smtp.live.com',
+  host: 'smtp.titan.email',
   auth: {
-    user: 'releifweed420@outlook.com',
-    pass: 'lanyoestate1'
+    // user: 'releifweed420@outlook.com',
+    user: 'info@releifweed420.com',
+    pass: 'F7OMFxfzNF'
+    // pass: 'lanyoestate1'
   },
-  port: 587
+  // port: 587
+  port: 465
 });
 
 const orderRouter = express.Router()
@@ -29,8 +43,8 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
     const ordersent = await neworder.save()
 
     const mailOptions = {
-        from: 'releifweed420@outlook.com',
-        to: `${req.body.shippingDetails.email}, releifweed420@outlook.com`,
+        from: 'info@releifweed420.com',
+        to: `${req.body.shippingDetails.email}, info@releifweed420.com`,
         subject: 'Order Received',
         html: ` <!DOCTYPE html>
 
@@ -474,9 +488,6 @@ orderRouter.post('/getorder', expressAsyncHandler(async (req, res) => {
         message: ' email may have been sent'
       })
 }))
-
-
-
 
 orderRouter.get('/',  expressAsyncHandler(async (req, res) => {
    const orders = await order.find({})
